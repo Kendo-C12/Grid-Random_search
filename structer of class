@@ -1,0 +1,94 @@
+self
+|
+|
+|--- research_type : int (1, 2, 3)
+|
+|--- model : nn.module
+|--- models : list of nn.module (3)
+|--- create_model : function that take class 
+|                   that return nn.module (2)
+|
+|--- data
+|     |--- X_train
+|     |--- y_train
+|     |--- X_test
+|     |--- y_test
+|
+|--- now
+|     |--- hyperparameter : dict -> value
+|     |--- model : dict -> value
+|     |--- data : dict -> value
+|
+|--- config
+|     |--- hyperparameter
+|     |     |--- range : dict -> [low, high, step]
+|     |     |--- choice : dict -> list
+|     |     |--- fixed : dict -> value
+|     |
+|     |--- model
+|           |--- range : dict -> [low, high, step]
+|           |--- choice : dict -> list
+|           |--- fixed : dict -> value
+|
+|
+|--- train_type() : function (grid, random)
+|--- model_train_type() : function (grid, random)
+|
+|--- train_loop() : function that take class
+|
+|--- train_case : string
+|
+|--- saveModel : dict
+
+
+argunments:
+  public required:
+    data: {
+      X_train (numpy),
+      y_train (numpy),
+      X_test (numpy),
+      y_test (numpy)
+    }
+    config: {
+      hyperparameter: {
+        range: dict,
+        choice: dict,
+        fixed: dict
+      },
+      model: {
+        range: dict,
+        choice: dict,
+        fixed: dict
+      }
+    },
+    train_loop: function,
+    research_type: int (1, 2, 3)
+      1: only hyperparameter
+      2: hyperparameter and model with config
+      3: hyperparameter and model with choice
+
+  case research_type required:
+    1:
+      model is nn.module
+    2:
+      model is None
+      create_model is function that returns nn.module
+    3:
+      model is None
+      models is list of nn.module
+
+
+
+  public optional:
+    grid_search: bool (default: True)
+
+  case research_type optional:
+    1:
+      pass
+    2:
+      pass
+    3:
+      max_trains: int (default: 100)
+
+
+  
