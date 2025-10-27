@@ -64,7 +64,7 @@ class researcher:
         self.train_type = self.startGridSearchHyperparameter if grid_search else self.startRandomSearchHyperparameter
         self.model_train_type = self.startGridSearchModel if grid_search else self.startRandomSearchModel
 
-        self.train_loop = train_loop
+         self.train_loop= train_loop
 
         # config now hyperparameter
         for [key,value] in self.config.hyperparameter.range.items():
