@@ -67,5 +67,3 @@ argunments required:
       pass
     3:
       max_trains: int (default: 100)
-
-  
